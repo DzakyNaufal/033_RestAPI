@@ -115,4 +115,15 @@ class HomeViewModel(private val kontakRepository: KontakRepository) : ViewModel(
             }
         }
     }
+
+    @Composable
+    fun HomeStatus(
+        kontakUIState: KontakUIState,
+        retryAction: () -> Unit,
+        modifier: Modifier = Modifier,
+        onDeleteClick: (Kontak) -> Unit = {},
+        onDetailClick: (Kontak) -> Unit
+    ) {
+
+    }
 }

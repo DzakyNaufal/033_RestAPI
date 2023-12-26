@@ -132,7 +132,7 @@ class HomeViewModel(private val kontakRepository: KontakRepository) : ViewModel(
         retryAction: () -> Unit,
         modifier: Modifier = Modifier,
         onDeleteClick: (Kontak) -> Unit = {},
-        onDetailClick: (Kontak) -> Unit
+        onDetailClick: (Int) -> Unit
     ) {
 
         when (kontakUIState) {
@@ -140,7 +140,7 @@ class HomeViewModel(private val kontakRepository: KontakRepository) : ViewModel(
             is KontakUIState.Success -> KontakLayout(
                 kontak = kontakUIState.kontak, modifier = modifier.fillMaxWidth(),
                 onDetailClick = {
-                    onDetailClick(it.id)
+                    onDetailClick(it.Id)
                 },
                 onDeleteClick = {
                     onDeleteClick(it)
@@ -189,7 +189,18 @@ class HomeViewModel(private val kontakRepository: KontakRepository) : ViewModel(
             },
         ){ innerPadding ->
 
+            HomeStatus(
+                kontakUIState = viewModel.kontakUIState,
+                retryAction = {
+                    viewModel.getKontak() },
+                modifier = Modifier.padding(innerPadding),
+
+                onDetailClick = onDetailClick,
+                onDeleteClick = {
+                    viewModel.deleteKontak(it.Id)
+                    viewModel.getKontak()
+                }
+            )
         }
     }
-
 }

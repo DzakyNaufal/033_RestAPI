@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.consumeapi.model.Kontak
+import com.example.consumeapi.navigation.DestinasiNavigasi
 import com.example.consumeapi.repository.KontakRepository
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -140,4 +141,10 @@ class HomeViewModel(private val kontakRepository: KontakRepository) : ViewModel(
             is KontakUIState.Error -> OnError(retryAction, modifier.fillMaxWidth())
         }
     }
+
+    object DestinasiHome : DestinasiNavigasi {
+        override val route = "home"
+        override val titleRes = "Kontak"
+    }
+
 }

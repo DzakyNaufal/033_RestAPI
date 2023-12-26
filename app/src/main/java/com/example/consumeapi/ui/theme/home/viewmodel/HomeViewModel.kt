@@ -125,5 +125,19 @@ class HomeViewModel(private val kontakRepository: KontakRepository) : ViewModel(
         onDetailClick: (Kontak) -> Unit
     ) {
 
+        when (kontakUIState) {
+            is KontakUIState.Loading -> Onloading(modifier = modifier.fillMaxWidth())
+            is KontakUIState.Success -> KontakLayout(
+                kontak = kontakUIState.kontak, modifier = modifier.fillMaxWidth(),
+                onDetailClick = {
+                    onDetailClick(it.id)
+                },
+                onDeleteClick = {
+                    onDeleteClick(it)
+                }
+            )
+
+            is KontakUIState.Error -> OnError(retryAction, modifier.fillMaxWidth())
+        }
     }
 }

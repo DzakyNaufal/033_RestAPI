@@ -3,6 +3,7 @@ package com.example.consumeapi.ui.theme.home.viewmodel
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.consumeapi.model.Kontak
@@ -48,5 +49,13 @@ class HomeViewModel(private val kontakRepository: KontakRepository) : ViewModel(
                 KontakUIState.Error
             }
         }
+    }
+
+    fun KontakCard(
+        kontak: Kontak
+        onDeleteClick: (Kontak) -> Unit = {},
+        modifier: Modifier = Modifier
+    ) {
+
     }
 }

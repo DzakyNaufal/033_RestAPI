@@ -22,9 +22,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.consumeapi.model.Kontak
 import com.example.consumeapi.navigation.DestinasiNavigasi
 import com.example.consumeapi.repository.KontakRepository
+import com.example.consumeapi.ui.theme.PenyediaViewModel
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
@@ -146,5 +148,13 @@ class HomeViewModel(private val kontakRepository: KontakRepository) : ViewModel(
         override val route = "home"
         override val titleRes = "Kontak"
     }
+
+    @Composable
+    fun HomeScreen(
+        navigateToItemEntry: () -> Unit,
+        modifier: Modifier = Modifier,
+        onDetailClick: (Int) -> Unit = {},
+        viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
+    ) { }
 
 }

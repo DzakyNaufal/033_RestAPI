@@ -3,6 +3,7 @@ package com.example.consumeapi.ui.kontak.viewmodel
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import com.example.consumeapi.model.Kontak
 import com.example.consumeapi.repository.KontakRepository
 
 class InsertViewModel (private val kontakRepository: KontakRepository) : viewModel() {
@@ -34,4 +35,11 @@ data class InsertUiEvent(
     val nama: String = "",
     val email: String = "",
     val nohp: String = "",
+)
+
+fun InsertUiEvent.toKontak(): Kontak = Kontak(
+    id = id,
+    nama = nama,
+    email = email,
+    nohp = nohp,
 )

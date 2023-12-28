@@ -1,4 +1,4 @@
-package com.example.consumeapi.ui.theme.home.viewmodel
+package com.example.consumeapi.ui.home.viewmodel
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
